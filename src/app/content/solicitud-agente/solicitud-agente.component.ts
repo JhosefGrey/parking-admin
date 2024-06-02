@@ -38,7 +38,7 @@ export class SolicitudAgenteComponent implements OnInit {
 
   loadData(event: string) {
     this._service.getAllByAgente(event).subscribe((res) => {
-      this.solicitudes = res;
+      this.solicitudes = res.filter((x) => x.agenteAsignado = event);
     })
   }
 
