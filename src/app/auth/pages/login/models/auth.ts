@@ -2,7 +2,7 @@ export class Auth {
     constructor(
         public email: string = '',
         public clave: string = '',
-        public tipo: number = 2
+        public tipo: number = 1
     ) { }
 }
 

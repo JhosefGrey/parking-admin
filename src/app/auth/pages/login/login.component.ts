@@ -23,7 +23,7 @@ export class LoginComponent {
     this._service.postLogin(this.obj).subscribe((res) => {
       this._service.token = res.token;
       this._service.user = res.user;
-      this._router.navigateByUrl('/home')
+      this._router.navigateByUrl('/inicio/home')
     })
   }
 
