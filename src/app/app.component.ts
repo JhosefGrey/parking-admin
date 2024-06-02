@@ -10,7 +10,7 @@ import { SharedService } from '../shared/services/shared.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent  {
+export class AppComponent implements OnInit {
   title = 'parking-station';
   show: boolean = false;
 
@@ -24,11 +24,14 @@ export class AppComponent  {
   };
 
   constructor(private _loading: SharedService, private cdr: ChangeDetectorRef){
+   
+  }
+
+  ngOnInit(): void {
     this._loading.setLoading.asObservable().subscribe((res) => {
       this.show = res;
       this.cdr.detectChanges();
     })
   }
-
 
 }
