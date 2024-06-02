@@ -3,6 +3,7 @@ import { DialogRemoteControl } from '@ng-vibe/dialog';
 import { UsuarioCrear } from '../../models/usuarios';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UsuariosService } from '../../usuarios.service';
 
 @Component({
   selector: 'app-usuario-modal',
@@ -14,14 +15,18 @@ import { FormsModule } from '@angular/forms';
 export class UsuarioModalComponent {
   dialogRemoteControl: DialogRemoteControl = inject(DialogRemoteControl);
 
+  constructor(private _service: UsuariosService) { }
+
   obj: UsuarioCrear = {
     clave: '',
     email: ''
   }
 
   save(): void {
-    const data = { reload: true };
-    this.dialogRemoteControl.closeDialog(data);
+    this._service.create(this.obj).subscribe(() => {
+      const data = { reload: true };
+      this.dialogRemoteControl.closeDialog(data);
+    })
   }
 
   close(): void {
