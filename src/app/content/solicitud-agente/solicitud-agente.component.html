@@ -13,7 +13,7 @@
             <div class="col-12 my-2">
                 <label for="txtApellido" class="form-label">Agente</label>
     
-                <select (ngModelChange)="loadData()" class="form-select" required name="idUsuario" [(ngModel)]="idAgente">
+                <select (ngModelChange)="loadData($event)" class="form-select" required name="idUsuario" [(ngModel)]="idAgente">
                     <option *ngFor="let agente of agentes" [ngValue]="agente._id">{{ agente.nombre }} {{ agente.apellido }}</option>
                   </select>
             </div>
@@ -22,39 +22,35 @@
     </div>
     <div class="row my-2">
 
-        <!-- <div class="col-12 table-responsive">
+        <div class="col-12 table-responsive">
             <table class="table table-sm table-hover table-striped">
                 <thead>
                     <tr>
-                        <th>Código</th>
-                        <th>Dirección</th>
-                        <th>Opciones</th>
+                        <th>Parqueo</th>
+                        <th>Inquilino</th>
+                        <th>Fecha Solicitud</th>
+                        <th>Fecha Entregado</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (obj of listado; track $index) {
+                    @for (obj of solicitudes; track $index) {
                     <tr>
-                        <td>{{ obj.codigo }}</td>
-                        <td>{{ obj.direccion }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-warning btn-sm" (click)="openModal('editar' ,obj._id)"><i
-                                        class="bi bi-pen-fill"></i></button>
-                                <button class="btn btn-danger btn-sm" (click)="delete(obj._id)"><i
-                                        class="bi bi-trash3"></i></button>
-                            </div>
-                        </td>
+                        <td>{{ obj.parqueo.codigo }}</td>
+                        <td>{{ obj.inquilino.nombre }} - {{ obj.inquilino.apellido }}</td>
+                        <td>{{ obj.fechaSolicitud | date: 'dd/MMM/yyyy HH:mm' }}</td>
+                        <td>{{ obj.fechaAsignado | date: 'dd/MMM/yyyy HH:mm' }}</td>
+                        
                     </tr>
                     }
                     @empty {
                     <tr>
-                        <td colspan="3" align="center"> <span class="text-muted">Aún sin datos...</span> </td>
+                        <td colspan="4" align="center"> <span class="text-muted">Aún sin datos...</span> </td>
                     </tr>
                     }
                 </tbody>
             </table>
 
-        </div> -->
+        </div>
 
     </div>
 

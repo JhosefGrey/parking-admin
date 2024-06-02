@@ -3,6 +3,8 @@ import { AgenteVista } from '../agentes/models/agente';
 import { AgenteService } from '../agentes/services/agente.service';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SolicitudAgenteService } from './services/solicitud-agente.service';
+import { SolicitudAgenteVista } from './models/solicitud-agente';
 
 @Component({
   selector: 'app-solicitud-agente',
@@ -15,7 +17,10 @@ export class SolicitudAgenteComponent implements OnInit {
 
   agentes: AgenteVista[] = [];
   idAgente: string = '';
-  constructor(private _agente: AgenteService, private _location: Location) { }
+
+  solicitudes: SolicitudAgenteVista[] = [];
+
+  constructor(private _agente: AgenteService, private _location: Location, private _service: SolicitudAgenteService) { }
 
   ngOnInit(): void {
     this.getAllAgentes();
@@ -31,8 +36,10 @@ export class SolicitudAgenteComponent implements OnInit {
     this._location.back();
   }
 
-  loadData() {
-
+  loadData(event: string) {
+    this._service.getAllByAgente(event).subscribe((res) => {
+      this.solicitudes = res;
+    })
   }
 
 }
