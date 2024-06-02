@@ -48,6 +48,16 @@ export class HomeComponent implements OnInit {
       url: 'parqueos'
     },
     {
+      description: 'Catálogo de casas',
+      title: 'Casas',
+      url: 'casas'
+    },
+    {
+      description: 'Catálogo de inquilinos',
+      title: 'Inquilinos',
+      url: 'inquilinos'
+    },
+    {
       description: 'Consulta de solicitudes por agente',
       title: 'Solicitudes por agente',
       url: 'solicitudes-agente'

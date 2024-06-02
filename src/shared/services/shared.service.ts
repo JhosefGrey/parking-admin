@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AppearanceAnimation, DisappearanceAnimation, ProgressBar, TextAlignEnum, ToastPosition, ToastTypeEnum, ToastifyRemoteControl } from '@ng-vibe/toastify';
+import { NgxLoadingService } from 'ngx-loading';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
   private toast: ToastifyRemoteControl = new ToastifyRemoteControl();
-  constructor() { }
+  public setLoading = new BehaviorSubject<boolean>(false);
+
+  constructor(private spinner: NgxLoadingService) { }
 
   mensaje(content: string, tipo: ToastTypeEnum) {
     this.toast.options = {
@@ -21,5 +25,4 @@ export class SharedService {
     };
     this.toast.openToast();
   }
-
 }

@@ -7,6 +7,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { BloquesComponent } from './bloques/bloques.component';
 import { ParqueoComponent } from './parqueo/parqueo.component';
 import { SolicitudAgenteComponent } from './solicitud-agente/solicitud-agente.component';
+import { InquilinosComponent } from './inquilinos/inquilinos.component';
+import { CasaComponent } from './casa/casa.component';
 
 export const CONTENT_ROUTES: Routes = [
     {
@@ -29,6 +31,12 @@ export const CONTENT_ROUTES: Routes = [
             },
             {
                 path: 'parqueos', loadComponent: () => ParqueoComponent
+            },
+            {
+                path: 'casas', loadComponent: () => CasaComponent
+            },
+            {
+                path: 'inquilinos', loadComponent: () => InquilinosComponent
             },
             {
                 path: 'solicitudes-agente', loadComponent: () => SolicitudAgenteComponent
