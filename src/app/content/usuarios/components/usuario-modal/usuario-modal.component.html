@@ -19,11 +19,15 @@
             <label for="txtClave" class="form-label">Clave</label>
             <input type="password" class="form-control" required [(ngModel)]="obj.clave" name="clave" #claveM="ngModel" id="txtClave">
             <span class="text-danger my-1" *ngIf="claveM.invalid && (claveM.dirty || claveM.touched)"> La clave es obligatoria </span>
-            <span class="text-danger my-1" *ngIf="claveM.errors?.['required'] && (claveM.dirty || claveM.touched)"> El
-                email es obligatorio </span>
+            <span class="text-danger my-1" *ngIf="claveM.errors?.['required'] && (claveM.dirty || claveM.touched)">La clave es obligatoria</span>
         </div>
-        <div class="col-12">
-            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Crear</button>
+        <div class="col-12 d-flex justify-content-end">
+    
+            <div class="btn-group">
+                <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Crear</button>
+                <a (click)="close()" class="btn btn-secondary">Cancelar</a>
+            </div>
+
         </div>
     </form>
 
