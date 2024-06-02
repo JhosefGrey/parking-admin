@@ -20,6 +20,7 @@ export class AppComponent  {
     secondaryColour: "#dcc17d",
     tertiaryColour: "$c9b095",
     backdropBorderRadius: '3px',
+    fullScreenBackdrop: true
   };
 
   constructor(private _loading: SharedService, private cdr: ChangeDetectorRef){

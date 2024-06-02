@@ -16,7 +16,7 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
       if (totalRequest === 0) {
         setTimeout(() => {
           sharedService.setLoading.next(false);
-        }, 1000);
+        }, 800);
       }
 
     })

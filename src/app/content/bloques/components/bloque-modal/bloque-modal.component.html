@@ -1,1 +1,29 @@
-<p>bloque-modal works!</p>
+<div class="container p-3">
+    <div class="row">
+        <div class="col-12">
+            <h4>{{ esEditar == true ?  'Editar' : 'Crear' }} Bloque</h4>
+            <hr>
+        </div>
+    </div>
+
+    <form #f="ngForm" class="row g-3 my-2" (ngSubmit)="save()">
+        <div class="col-12">
+            <label for="txtCodigo" class="form-label">Código</label>
+            <input type="text" [(ngModel)]="obj.codigo" required name="codigo" #emailM="ngModel" class="form-control"
+                id="txtCodigo">
+            <!-- <span class="text-danger my-1" *ngIf="emailM.invalid && (emailM.dirty || emailM.touched)"> El email es obligatorio </span> -->
+            <span class="text-danger my-1" *ngIf="emailM.errors?.['email'] && (emailM.dirty || emailM.touched)"> El
+                código es obligatorio </span>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end">
+    
+            <div class="btn-group">
+                <button type="submit" [disabled]="f.invalid" class="btn btn-primary">{{ esEditar == true ?  'Editar' : 'Crear' }}</button>
+                <a (click)="close()" class="btn btn-secondary">Cancelar</a>
+            </div>
+
+        </div>
+    </form>
+
+</div>
