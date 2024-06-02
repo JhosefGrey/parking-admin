@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4>Crear Usuario</h4>
+            <hr>
+        </div>
+    </div>
+
+    <form #f="ngForm" class="row g-3 my-2" (ngSubmit)="save()">
+        <div class="col-md-6">
+            <label for="txtEmail" class="form-label">Email</label>
+            <input type="email" [(ngModel)]="obj.email" required name="email" #emailM="ngModel" class="form-control"
+                id="txtEmail" email>
+            <span class="text-danger my-1" *ngIf="emailM.invalid"> El email es obligatorio </span>
+            <span class="text-danger my-1" *ngIf="emailM.errors?.['email'] && (emailM.dirty || emailM.touched)"> El
+                email es obligatorio </span>
+        </div>
+        <div class="col-md-6">
+            <label for="txtClave" class="form-label">Clave</label>
+            <input type="password" class="form-control" required [(ngModel)]="obj.clave" name="clave" #claveM="ngModel" id="txtClave">
+            <span class="text-danger my-1" *ngIf="claveM.invalid"> La clave es obligatoria </span>
+            <span class="text-danger my-1" *ngIf="claveM.errors?.['required'] && (claveM.dirty || claveM.touched)"> El
+                email es obligatorio </span>
+        </div>
+        <div class="col-12">
+            <button type="submit" [disabled]="" class="btn btn-primary">Crear</button>
+        </div>
+    </form>
+
+</div>
